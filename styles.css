@@ -2,7 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
     --900:#312e81;
     --800:#3730a3;
@@ -19,4 +24,70 @@
 body {
     background-color: var(--900);
     color: var(--50);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 3rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    width: 75vw;
+    margin-bottom: 3rem;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h2 + p {
+    font-size: 24px;
+}
+
+#board {
+    width: 30rem;
+    height: 30rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-template-rows: repeat(3, minmax(100px, 1fr));
+}
+
+.square {
+    border: 2px solid var(--50);
+}
+
+#sq1,#sq2,#sq3 {
+    border-top: none ;
+}
+
+#sq7,#sq8,#sq9 {
+    border-bottom: none;
+}
+
+#sq1,#sq4,#sq7 {
+    border-left: none;
+}
+
+#sq3,#sq6,#sq9 {
+    border-right: none;
 }
