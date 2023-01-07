@@ -91,3 +91,47 @@ h2 + p {
 #sq3,#sq6,#sq9 {
     border-right: none;
 }
+
+.modal {
+    background: rgba(199, 210, 254, 0.35);
+    color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.modal  > p {
+    font-size: 48px;
+}
+
+.options {
+    display: flex;
+    gap: 2rem;
+}
+
+.options > button {
+    width: 4rem;
+    height: 4rem;
+    font-size: 36px;
+    background: black;
+    color: var(--50);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.options > button:hover {
+    background: var(--50);
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
