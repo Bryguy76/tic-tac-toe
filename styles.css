@@ -83,6 +83,11 @@ h2 + p {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.square:hover {
+    background: var(--500);
 }
 
 #sq1,#sq2,#sq3 {
@@ -102,7 +107,7 @@ h2 + p {
 }
 
 .modal {
-    background: rgba(199, 210, 254, 0.35);
+    background: rgba(199, 210, 254, 0.95);
     color: black;
     position: absolute;
     top: 0;

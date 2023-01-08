@@ -1,9 +1,7 @@
 'use strict';
 
 const Player = (mark) => {
-    let turn = false;
     return {
-        turn,
         mark
     }
 }
@@ -41,7 +39,7 @@ twoPlayerButton.addEventListener('click', function () {
 
 // Game board stuff
 const gameBoard = (() => {
-    let state = ['a','b','c','d','e','f','g','h','i'];
+    let state = ['','','','','','','','',''];
     const boardTiles = document.querySelectorAll('.square');
     return {
         state,
@@ -49,17 +47,74 @@ const gameBoard = (() => {
     }
 })();
 
+for (let i = 0; i < gameBoard.boardTiles.length; i++) {
+    gameBoard.boardTiles[i].addEventListener('click', function () {
+        if(gameBoard.state[i] != ''){
+            return;
+        } else {
+            if (!gameLogic.whoseTurn){
+                gameBoard.state[i] = playerOne.mark;
+                displayController.refreshBoard();
+                gameLogic.checkWinner();
+                gameLogic.checkTie();
+                displayController.activePlayer();
+                gameLogic.whoseTurn = 1;
+            } else {
+                gameBoard.state[i] = playerTwo.mark;
+                displayController.refreshBoard();
+                gameLogic.checkWinner();
+                gameLogic.checkTie()
+                displayController.activePlayer();
+                gameLogic.whoseTurn = 0;
+            }
+        }
+    })
+}
 const gameLogic = (() => {
     let whoseTurn = 0;
     let winner = false;
-    let winningPlayer = 'Player 1';
+    let winningPlayer = '';
     const winningCombinations = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8],[2,4,6]];
-    const checkWinner = (winningCombinations) => {
-
+    let winningCombo = ['','',''];
+    const checkWinner = () => {
+        for(let i = 0; i < winningCombinations.length; i++){
+            for(let j = 0; j < 3; j++){
+                if(gameBoard.state[winningCombinations[i][j] == '']){
+                   return;
+                }else {
+                    winningCombo[j] = gameBoard.state[winningCombinations[i][j]];
+                }
+            }
+            if(winningCombo[0] == winningCombo[1] && winningCombo[1] == winningCombo[2] && winningCombo[0] != '' && winningCombo[1]!=''){
+                winner = true;
+                if(winningCombo[0] == 'X'){
+                    gameLogic.winningPlayer = 'Player 1';
+                } else {
+                    gameLogic.winningPlayer = 'Player 2';
+                }
+                displayController.somebodyWon();
+                displayController.activePlayer();
+                return;
+            }
+        }
+    }
+    const checkTie = () => {
+        let gameTied = true;
+        for(let i = 0; i < gameBoard.state.length; i++){
+            if(!gameBoard.state[i]){
+                gameTied = false;
+            }
+        }
+        if (gameTied){
+            displayController.endInTie();
+            displayController.activePlayer();
+        }
     }
     return {
-       whoseTurn,
-       checkWinner, winningPlayer
+        whoseTurn,
+        checkWinner,
+        winningPlayer,
+        checkTie
     }
 })();
 
@@ -78,7 +133,10 @@ const displayController = (() => {
        titleArea.innerText = `${gameLogic.winningPlayer} won the game!`
 
     }
+    const endInTie = () => {
+        titleArea.innerText = 'The match is a draw!';
+    }
     return {
-       activePlayer, refreshBoard, somebodyWon
+       activePlayer, refreshBoard, somebodyWon,endInTie
     }
 })();
