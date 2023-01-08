@@ -30,6 +30,10 @@ body {
     margin: 3rem;
 }
 
+.somebodyWon {
+    background: lightseagreen;
+}
+
 h1 {
     font-size: 48px;
     margin-bottom: 3rem;
@@ -74,6 +78,11 @@ h2 + p {
 
 .square {
     border: 2px solid var(--50);
+    font-size: 48px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #sq1,#sq2,#sq3 {
