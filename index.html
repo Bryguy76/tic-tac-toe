@@ -11,14 +11,17 @@
 </head>
 <body id="body">
 <h1 id="title-area">Tic Tac Toe</h1>
+<button id="play-again" class="hidden">Play Again</button>
 <header>
     <div class="left">
         <h2>X</h2>
-        <p>Player 1</p>
+        <input id="input1" type="text" placeholder="Player 1">
+        <p id="hero-title"></p>
     </div>
     <div class="right">
         <h2>O</h2>
-        <p id="opponent-title">Player 2</p>
+        <input id="input2" type="text" placeholder="Player 2">
+        <p id="opponent-title"></p>
     </div>
 </header>
 <div id="board">
@@ -31,13 +34,6 @@
     <div class="square" id="sq7"></div>
     <div class="square" id="sq8"></div>
     <div class="square" id="sq9"></div>
-</div>
-<div class="modal">
-    <p>Choose how many players:</p>
-    <div class="options">
-        <button id="one-player-game">1</button>
-        <button id="two-player-game">2</button>
-    </div>
 </div>
 </body>
 </html>

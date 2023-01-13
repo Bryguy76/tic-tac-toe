@@ -39,6 +39,20 @@ h1 {
     margin-bottom: 3rem;
 }
 
+#play-again {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: var(--500);
+    border: 2px solid var(--50);
+    color: var(--50);
+    font-size: 20px;
+    position: absolute;
+    top: 7%;
+    right: 10%;
+    cursor: pointer;
+}
+
 header {
     display: flex;
     justify-content: space-evenly;
@@ -59,6 +73,15 @@ header {
     gap: 1rem;
     align-items: center;
 }
+
+#hero-title {
+    font-size: 36px;
+}
+
+#opponent-title {
+    font-size: 36px;
+}
+
 
 h2 {
     font-size: 36px;
